@@ -2,7 +2,6 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
-import './define.js';
 
 type SpinnerStoryArgs = Args;
 type SpinnerStoryMeta = Meta<SpinnerStoryArgs>;
@@ -79,5 +78,7 @@ export const Size = renderComponent(html<SpinnerStoryArgs>`
     <fluent-spinner size="large"></fluent-spinner>
     <code>extra-large</code>
     <fluent-spinner size="extra-large"></fluent-spinner>
+    <code>huge</code>
+    <fluent-spinner size="huge"></fluent-spinner>
   </div>
 `);

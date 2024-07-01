@@ -50,6 +50,8 @@ import { AriaLiveAnnouncerProps } from '@fluentui/react-aria';
 import { AriaLiveAnnouncerState } from '@fluentui/react-aria';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
+import { AtomMotion } from '@fluentui/react-motion';
+import { AtomMotionFn } from '@fluentui/react-motion';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -157,6 +159,11 @@ import { CheckboxProps } from '@fluentui/react-checkbox';
 import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
+import { ColorSwatch } from '@fluentui/react-swatch-picker';
+import { colorSwatchClassNames } from '@fluentui/react-swatch-picker';
+import { ColorSwatchProps } from '@fluentui/react-swatch-picker';
+import { ColorSwatchSlots } from '@fluentui/react-swatch-picker';
+import { ColorSwatchState } from '@fluentui/react-swatch-picker';
 import { ColorTokens } from '@fluentui/react-theme';
 import { ColumnIdContextProvider } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
@@ -189,6 +196,8 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
+import { createMotionComponent } from '@fluentui/react-motion';
+import { createPresenceComponent } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -255,9 +264,11 @@ import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogContextValue } from '@fluentui/react-dialog';
+import { DialogModalType } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
+import { DialogProvider } from '@fluentui/react-dialog';
 import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
@@ -324,6 +335,11 @@ import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { DurationTokens } from '@fluentui/react-theme';
+import { EmptySwatch } from '@fluentui/react-swatch-picker';
+import { emptySwatchClassNames } from '@fluentui/react-swatch-picker';
+import { EmptySwatchProps } from '@fluentui/react-swatch-picker';
+import { EmptySwatchSlots } from '@fluentui/react-swatch-picker';
+import { EmptySwatchState } from '@fluentui/react-swatch-picker';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
 import { FieldContextProvider } from '@fluentui/react-field';
@@ -372,6 +388,11 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { ImageSwatch } from '@fluentui/react-swatch-picker';
+import { imageSwatchClassNames } from '@fluentui/react-swatch-picker';
+import { ImageSwatchProps } from '@fluentui/react-swatch-picker';
+import { ImageSwatchSlots } from '@fluentui/react-swatch-picker';
+import { ImageSwatchState } from '@fluentui/react-swatch-picker';
 import { InfoLabel } from '@fluentui/react-infolabel';
 import { infoLabelClassNames } from '@fluentui/react-infolabel';
 import { InfoLabelProps } from '@fluentui/react-infolabel';
@@ -514,6 +535,7 @@ import { mergeClasses } from '@griffel/react';
 import { MessageBar } from '@fluentui/react-message-bar';
 import { MessageBarActions } from '@fluentui/react-message-bar';
 import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
+import { MessageBarActionsContextValues } from '@fluentui/react-message-bar';
 import { MessageBarActionsProps } from '@fluentui/react-message-bar';
 import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
 import { MessageBarActionsState } from '@fluentui/react-message-bar';
@@ -525,6 +547,7 @@ import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { messageBarClassNames } from '@fluentui/react-message-bar';
 import { MessageBarContextProvider } from '@fluentui/react-message-bar';
 import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarContextValues } from '@fluentui/react-message-bar';
 import { MessageBarGroup } from '@fluentui/react-message-bar';
 import { messageBarGroupClassNames } from '@fluentui/react-message-bar';
 import { MessageBarGroupProps } from '@fluentui/react-message-bar';
@@ -539,6 +562,10 @@ import { messageBarTitleClassNames } from '@fluentui/react-message-bar';
 import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
+import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
+import { MotionComponentProps } from '@fluentui/react-motion';
+import { MotionImperativeRef } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
 import { OnSelectionChangeData } from '@fluentui/react-utilities';
@@ -612,8 +639,12 @@ import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { presenceBlockedRegular } from '@fluentui/react-badge';
 import { presenceBusyFilled } from '@fluentui/react-badge';
+import { PresenceComponentProps } from '@fluentui/react-motion';
 import { presenceDndFilled } from '@fluentui/react-badge';
 import { presenceDndRegular } from '@fluentui/react-badge';
+import { PresenceGroup } from '@fluentui/react-motion';
+import { PresenceMotion } from '@fluentui/react-motion';
+import { PresenceMotionFn } from '@fluentui/react-motion';
 import { presenceOfflineRegular } from '@fluentui/react-badge';
 import { presenceOofRegular } from '@fluentui/react-badge';
 import { presenceUnknownRegular } from '@fluentui/react-badge';
@@ -677,6 +708,7 @@ import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
+import { renderColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
 import { renderDataGrid_unstable } from '@fluentui/react-table';
@@ -701,11 +733,13 @@ import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderEmptySwatch_unstable } from '@fluentui/react-swatch-picker';
 import { RendererProvider } from '@griffel/react';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderImageSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { renderInlineDrawer_unstable } from '@fluentui/react-drawer';
 import { renderInput_unstable } from '@fluentui/react-input';
@@ -756,6 +790,9 @@ import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderSwatchPicker_unstable } from '@fluentui/react-swatch-picker';
+import { renderSwatchPickerGrid } from '@fluentui/react-swatch-picker';
+import { renderSwatchPickerRow_unstable } from '@fluentui/react-swatch-picker';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTable_unstable } from '@fluentui/react-table';
@@ -894,6 +931,25 @@ import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Subtitle2Stronger } from '@fluentui/react-text';
 import { subtitle2StrongerClassNames } from '@fluentui/react-text';
 import { SubtreeContextValue } from '@fluentui/react-tree';
+import { swatchCSSVars } from '@fluentui/react-swatch-picker';
+import { SwatchPicker } from '@fluentui/react-swatch-picker';
+import { swatchPickerClassNames } from '@fluentui/react-swatch-picker';
+import { swatchPickerContextDefaultValue } from '@fluentui/react-swatch-picker';
+import { SwatchPickerContextValue } from '@fluentui/react-swatch-picker';
+import { SwatchPickerContextValues } from '@fluentui/react-swatch-picker';
+import { SwatchPickerGridProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker';
+import { SwatchPickerOnSelectionChangeData } from '@fluentui/react-swatch-picker';
+import { SwatchPickerProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerProvider } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRow } from '@fluentui/react-swatch-picker';
+import { swatchPickerRowClassNames } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowSlots } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowState } from '@fluentui/react-swatch-picker';
+import { SwatchPickerSlots } from '@fluentui/react-swatch-picker';
+import { SwatchPickerState } from '@fluentui/react-swatch-picker';
+import { SwatchProps } from '@fluentui/react-swatch-picker';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -1254,6 +1310,7 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAnimationFrame } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
@@ -1294,6 +1351,8 @@ import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColorSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useColorSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
@@ -1352,6 +1411,8 @@ import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEmptySwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useEmptySwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
@@ -1376,6 +1437,8 @@ import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useImageSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useImageSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infolabel';
 import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
@@ -1514,6 +1577,12 @@ import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSubtreeContext_unstable } from '@fluentui/react-tree';
+import { useSwatchPicker_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerContextValue_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerContextValues } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerRow_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerRowStyles_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -1601,6 +1670,7 @@ import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useTimeout } from '@fluentui/react-utilities';
 import { useToast_unstable } from '@fluentui/react-toast';
 import { useToastBody_unstable } from '@fluentui/react-toast';
 import { useToastBodyStyles_unstable } from '@fluentui/react-toast';
@@ -1739,6 +1809,10 @@ export { AriaLiveAnnouncerState }
 export { arrowHeights }
 
 export { assertSlots }
+
+export { AtomMotion }
+
+export { AtomMotionFn }
 
 export { Avatar }
 
@@ -1954,6 +2028,16 @@ export { CheckboxState }
 
 export { ColorPaletteTokens }
 
+export { ColorSwatch }
+
+export { colorSwatchClassNames }
+
+export { ColorSwatchProps }
+
+export { ColorSwatchSlots }
+
+export { ColorSwatchState }
+
 export { ColorTokens }
 
 export { ColumnIdContextProvider }
@@ -2017,6 +2101,10 @@ export { CreateFocusOutlineStyleOptions }
 export { createHighContrastTheme }
 
 export { createLightTheme }
+
+export { createMotionComponent }
+
+export { createPresenceComponent }
 
 export { createTableColumn }
 
@@ -2150,11 +2238,15 @@ export { DialogContentState }
 
 export { DialogContextValue }
 
+export { DialogModalType }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
 
 export { DialogProps }
+
+export { DialogProvider }
 
 export { DialogSlots }
 
@@ -2288,6 +2380,16 @@ export { DropdownState }
 
 export { DurationTokens }
 
+export { EmptySwatch }
+
+export { emptySwatchClassNames }
+
+export { EmptySwatchProps }
+
+export { EmptySwatchSlots }
+
+export { EmptySwatchState }
+
 export { Field }
 
 export { fieldClassNames }
@@ -2383,6 +2485,16 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
+
+export { ImageSwatch }
+
+export { imageSwatchClassNames }
+
+export { ImageSwatchProps }
+
+export { ImageSwatchSlots }
+
+export { ImageSwatchState }
 
 export { InfoLabel }
 
@@ -2668,6 +2780,8 @@ export { MessageBarActions }
 
 export { messageBarActionsClassNames }
 
+export { MessageBarActionsContextValues }
+
 export { MessageBarActionsProps }
 
 export { MessageBarActionsSlots }
@@ -2689,6 +2803,8 @@ export { messageBarClassNames }
 export { MessageBarContextProvider }
 
 export { MessageBarContextValue }
+
+export { MessageBarContextValues }
 
 export { MessageBarGroup }
 
@@ -2717,6 +2833,14 @@ export { MessageBarTitleProps }
 export { MessageBarTitleSlots }
 
 export { MessageBarTitleState }
+
+export { MessageBarTransitionContextValue }
+
+export { MotionComponentProps }
+
+export { MotionImperativeRef }
+
+export { motionTokens }
 
 export { OnOpenChangeData }
 
@@ -2864,9 +2988,17 @@ export { presenceBlockedRegular }
 
 export { presenceBusyFilled }
 
+export { PresenceComponentProps }
+
 export { presenceDndFilled }
 
 export { presenceDndRegular }
+
+export { PresenceGroup }
+
+export { PresenceMotion }
+
+export { PresenceMotionFn }
 
 export { presenceOfflineRegular }
 
@@ -2994,6 +3126,8 @@ export { renderCardPreview_unstable }
 
 export { renderCheckbox_unstable }
 
+export { renderColorSwatch_unstable }
+
 export { renderCombobox_unstable }
 
 export { renderCompoundButton_unstable }
@@ -3042,6 +3176,8 @@ export { renderDrawerHeaderTitle_unstable }
 
 export { renderDropdown_unstable }
 
+export { renderEmptySwatch_unstable }
+
 export { RendererProvider }
 
 export { renderField_unstable }
@@ -3051,6 +3187,8 @@ export { renderFlatTree_unstable }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderImageSwatch_unstable }
 
 export { renderInfoLabel_unstable }
 
@@ -3151,6 +3289,12 @@ export { renderSpinButton_unstable }
 export { renderSpinner_unstable }
 
 export { renderSplitButton_unstable }
+
+export { renderSwatchPicker_unstable }
+
+export { renderSwatchPickerGrid }
+
+export { renderSwatchPickerRow_unstable }
 
 export { renderSwitch_unstable }
 
@@ -3427,6 +3571,44 @@ export { Subtitle2Stronger }
 export { subtitle2StrongerClassNames }
 
 export { SubtreeContextValue }
+
+export { swatchCSSVars }
+
+export { SwatchPicker }
+
+export { swatchPickerClassNames }
+
+export { swatchPickerContextDefaultValue }
+
+export { SwatchPickerContextValue }
+
+export { SwatchPickerContextValues }
+
+export { SwatchPickerGridProps }
+
+export { SwatchPickerOnSelectEventHandler }
+
+export { SwatchPickerOnSelectionChangeData }
+
+export { SwatchPickerProps }
+
+export { SwatchPickerProvider }
+
+export { SwatchPickerRow }
+
+export { swatchPickerRowClassNames }
+
+export { SwatchPickerRowProps }
+
+export { SwatchPickerRowSlots }
+
+export { SwatchPickerRowState }
+
+export { SwatchPickerSlots }
+
+export { SwatchPickerState }
+
+export { SwatchProps }
 
 export { Switch }
 
@@ -4148,6 +4330,8 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAnimationFrame }
+
 export { useAnnounce }
 
 export { useAriaLiveAnnouncer_unstable }
@@ -4227,6 +4411,10 @@ export { useCheckbox_unstable }
 export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
+
+export { useColorSwatch_unstable }
+
+export { useColorSwatchStyles_unstable }
 
 export { useColumnIdContext }
 
@@ -4344,6 +4532,10 @@ export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
 
+export { useEmptySwatch_unstable }
+
+export { useEmptySwatchStyles_unstable }
+
 export { useEventCallback }
 
 export { useField_unstable }
@@ -4391,6 +4583,10 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useImageSwatch_unstable }
+
+export { useImageSwatchStyles_unstable }
 
 export { useInfoLabel_unstable }
 
@@ -4668,6 +4864,18 @@ export { useSplitButtonStyles_unstable }
 
 export { useSubtreeContext_unstable }
 
+export { useSwatchPicker_unstable }
+
+export { useSwatchPickerContextValue_unstable }
+
+export { useSwatchPickerContextValues }
+
+export { useSwatchPickerRow_unstable }
+
+export { useSwatchPickerRowStyles_unstable }
+
+export { useSwatchPickerStyles_unstable }
+
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
@@ -4841,6 +5049,8 @@ export { useTextareaStyles_unstable }
 export { useTextStyles_unstable }
 
 export { useThemeClassName }
+
+export { useTimeout }
 
 export { useToast_unstable }
 

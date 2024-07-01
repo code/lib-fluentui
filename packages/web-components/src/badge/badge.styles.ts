@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   badgeBaseStyles,
   badgeFilledStyles,
@@ -8,22 +9,23 @@ import {
   badgeTintStyles,
 } from '../styles/index.js';
 import { borderRadiusMedium, borderRadiusNone, borderRadiusSmall } from '../theme/design-tokens.js';
+import { extraSmallState, roundedState, smallState, squareState, tinyState } from '../styles/states/index.js';
 // why is the border not showing up?
 /** Badge styles
  * @public
  */
 export const styles = css`
-  :host([shape='square']) {
+  :host(${squareState}) {
     border-radius: ${borderRadiusNone};
   }
 
-  :host([shape='rounded']) {
+  :host(${roundedState}) {
     border-radius: ${borderRadiusMedium};
   }
 
-  :host([shape='rounded'][size='tiny']),
-  :host([shape='rounded'][size='extra-small']),
-  :host([shape='rounded'][size='small']) {
+  :host(${roundedState}${tinyState}),
+  :host(${roundedState}${extraSmallState}),
+  :host(${roundedState}${smallState}) {
     border-radius: ${borderRadiusSmall};
   }
 
@@ -33,4 +35,12 @@ export const styles = css`
   ${badgeOutlineStyles}
   ${badgeTintStyles}
   ${badgeBaseStyles}
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host,
+    :host([appearance='outline']),
+    :host([appearance='tint']) {
+      border-color: CanvasText;
+    }
+  `),
+);

@@ -1,26 +1,23 @@
-import { attr } from '@microsoft/fast-element';
-import { BaseProgress } from '../progress-bar/base-progress.js';
-import { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import { attr, FASTElement } from '@microsoft/fast-element';
+import { toggleState } from '../utils/element-internals.js';
 import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
-
-/**
- * Progress configuration options
- * @public
- */
-export type SpinnerOptions = {
-  indeterminateIndicator?: StaticallyComposableHTML<Spinner>;
-};
 
 /**
  * The base class used for constructing a fluent-spinner custom element
  * @public
  */
-export class Spinner extends BaseProgress {
+export class Spinner extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * The size of the spinner
    *
    * @public
-   * @default 'medium'
    * @remarks
    * HTML Attribute: size
    */
@@ -28,12 +25,44 @@ export class Spinner extends BaseProgress {
   public size?: SpinnerSize;
 
   /**
+   * Handles changes to size attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * The appearance of the spinner
    * @public
-   * @default 'primary'
    * @remarks
    * HTML Attribute: appearance
    */
   @attr
   public appearance?: SpinnerAppearance;
+
+  /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'progressbar';
+  }
 }
